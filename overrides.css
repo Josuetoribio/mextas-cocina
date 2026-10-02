@@ -1,0 +1,19 @@
+/* Ajustes de la versión publicada en mextas.com/restaurante/.
+   El export original no se toca: el build enlaza este archivo al final del <head>.
+   Objetivo: que ninguna sección provoque scroll horizontal en móviles (320–414 px). */
+
+/* Estadísticas del chef: la palabra más larga no cabía con 24 px de separación. */
+@media (max-width: 400px) {
+  .chef-stats { gap: 12px; }
+}
+
+@media (max-width: 340px) {
+  .chef-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Pie: las dos columnas de enlaces y 40 px de separación no cabían en 320 px. */
+  .foot { column-gap: 16px; }
+}
+
+/* Botón «Consultar disponibilidad»: su relleno lateral (en línea) no cabía en 320–360 px. */
+@media (max-width: 360px) {
+  #reservaciones form button[type=submit] { padding-left: 16px !important; padding-right: 16px !important; }
+}
