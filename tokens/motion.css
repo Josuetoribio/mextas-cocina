@@ -1,0 +1,16 @@
+:root{
+--ease-out:cubic-bezier(.22,.61,.36,1);/* @kind other */
+--ease-editorial:cubic-bezier(.16,1,.3,1);/* @kind other */
+--ease-in-out:cubic-bezier(.65,0,.35,1);/* @kind other */
+--dur-fast:180ms;/* @kind other */
+--dur-base:320ms;/* @kind other */
+--dur-slow:700ms;/* @kind other */
+--dur-reveal:1000ms;/* @kind other */
+}
+@keyframes mx-fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes mx-fade{from{opacity:0}to{opacity:1}}
+@keyframes mx-scale-in{from{opacity:0;transform:scale(.97) translateY(10px)}to{opacity:1;transform:none}}
+@keyframes mx-slide-in-right{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes mx-spin{to{transform:rotate(360deg)}}
+@keyframes mx-scroll-cue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(200%)}}
+@keyframes mx-pulse{0%,100%{opacity:1}50%{opacity:.35}}

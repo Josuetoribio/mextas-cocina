@@ -1,0 +1,16 @@
+<!-- @dsCard group="Components" viewport="700x200" name="Brand" subtitle="Wordmark (dark/light), Icon, ValueProp" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css"><script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{background:var(--surface-page-dark);margin:0;padding:0}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { Button, IconButton, Icon, Wordmark, Input, Select, Textarea, ChoiceChip, Tabs, NavLink, SectionHeader, DishCard, Stat, ValueProp, Modal, Toast, StatusBadge } = window.MextasDesignSystem_ce1b9d;
+
+const R = () => <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:0}}>
+ <div style={{padding:24,display:'flex',flexDirection:'column',gap:24}}><Wordmark/><ValueProp icon={<Icon name="leaf" size={30} strokeWidth={1}/>} title="Ingredientes locales" text="Productos frescos y de temporada."/></div>
+ <div style={{padding:24,background:'var(--mx-cream)',display:'flex',flexDirection:'column',gap:24,color:'var(--mx-gold-deep)'}}><Wordmark tone="light" size="s"/><div style={{display:'flex',gap:18}}>{['utensils-crossed','wine','calendar-days','clock','map-pin','chef-hat'].map(n=><Icon key={n} name={n} size={22}/>)}</div></div>
+</div>;
+ReactDOM.createRoot(document.getElementById('root')).render(<R/>);
+</script></body></html>

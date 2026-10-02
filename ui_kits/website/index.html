@@ -1,0 +1,76 @@
+<!-- @dsCard group="Website" viewport="1440x900" name="MEXTAS — sitio completo" subtitle="Interactive restaurant site: menu, reservations, events, gallery, contact" -->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MEXTAS · Cocina Contemporánea</title>
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="kit.css">
+<link rel="preload" as="image" href="../../assets/img/hero-rib-eye.jpg">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="ds-loader.js"></script>
+<script src="data.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="Shared.jsx"></script>
+<script type="text/babel" src="Navbar.jsx"></script>
+<script type="text/babel" src="Hero.jsx"></script>
+<script type="text/babel" src="Menu.jsx"></script>
+<script type="text/babel" src="Chef.jsx"></script>
+<script type="text/babel" src="Experiences.jsx"></script>
+<script type="text/babel" src="Reservation.jsx"></script>
+<script type="text/babel" src="Gallery.jsx"></script>
+<script type="text/babel" src="Visit.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+<script type="text/babel">
+function App() {
+  const [preset, setPreset] = React.useState(null);
+  const [legal, setLegal] = React.useState(null);
+  const [fab, setFab] = React.useState(false);
+  const toast = useToast();
+  const reserve = (p) => {
+    const hasType = p && p.type;
+    setPreset(hasType ? { ...p, t: Date.now() } : null);
+    scrollToId('reservaciones');
+    if (hasType && p.note) toast({ tone: 'info', title: p.note, message: 'Seleccionamos “' + p.type + '” en tu reservación.' });
+  };
+  React.useEffect(() => {
+    const on = () => { const r = document.getElementById('reservaciones'); const top = r ? r.getBoundingClientRect() : null; setFab(window.scrollY > window.innerHeight * .8 && !(top && top.top < window.innerHeight && top.bottom > 0)); };
+    window.addEventListener('scroll', on, { passive: true }); return () => window.removeEventListener('scroll', on);
+  }, []);
+  const { Button } = window.MX;
+  return (
+    <>
+      <Navbar onReserve={() => reserve()} />
+      <main>
+        <Hero onReserve={() => reserve()} />
+        <ValueBand />
+        <MenuSection onReserve={() => reserve()} />
+        <ChefSection />
+        <StorySection />
+        <ExperiencesSection onReserve={reserve} />
+        <GroupsSection />
+        <Reservation preset={preset} />
+        <GallerySection />
+        <TestimonialsSection />
+        <VisitSection />
+        <ContactSection />
+        <Newsletter />
+      </main>
+      <Footer onLegal={setLegal} />
+      <LegalModal doc={legal} onClose={() => setLegal(null)} />
+      <div className={'m-fab' + (fab ? '' : ' hide')}><Button fullWidth onClick={() => reserve()}>Reservar mesa</Button></div>
+    </>
+  );
+}
+window.MX_DS_READY.then(() => {
+  ReactDOM.createRoot(document.getElementById('root')).render(<ToastHost><App /></ToastHost>);
+});
+</script>
+</body>
+</html>

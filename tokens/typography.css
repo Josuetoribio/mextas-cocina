@@ -1,0 +1,14 @@
+:root{
+--font-display:"Cormorant Garamond","Cormorant",Georgia,serif;
+--font-sans:"Jost","Futura","Century Gothic",system-ui,sans-serif;
+--weight-light:300;--weight-regular:400;--weight-medium:500;--weight-semibold:600;
+--type-display-xl:clamp(3.25rem,6.4vw,6rem);
+--type-display-l:clamp(2.5rem,4.6vw,4.25rem);
+--type-display-m:clamp(2rem,3.4vw,3rem);
+--type-display-s:clamp(1.5rem,2.2vw,2rem);
+--type-title:1.375rem;
+--type-body-l:1.125rem;--type-body:1rem;--type-body-s:.875rem;
+--type-eyebrow:.75rem;--type-label:.8125rem;--type-caption:.75rem;
+--leading-display:1.02;--leading-title:1.15;--leading-body:1.6;
+--tracking-display:-.01em;--tracking-eyebrow:.22em;--tracking-label:.14em;--tracking-wordmark:.42em;
+}
