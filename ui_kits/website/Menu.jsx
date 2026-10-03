@@ -1,6 +1,6 @@
 function useFavorites() {
   const [favs, setFavs] = React.useState(() => { try { return JSON.parse(localStorage.getItem('mx-favs') || '[]'); } catch (e) { return []; } });
-  React.useEffect(() => { localStorage.setItem('mx-favs', JSON.stringify(favs)); }, [favs]);
+  React.useEffect(() => { try { localStorage.setItem('mx-favs', JSON.stringify(favs)); } catch (e) {} }, [favs]);
   const toggle = (id) => setFavs((f) => f.includes(id) ? f.filter((x) => x !== id) : [...f, id]);
   return [favs, toggle];
 }
